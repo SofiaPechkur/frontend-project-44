@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-console.log('Hi')
+import {sayGreeting} from '../src/cli.js';
+sayGreeting();
