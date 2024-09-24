@@ -2,12 +2,7 @@
 
 import readlineSync from 'readline-sync';
 import getUserName from '../src/cli.js';
-
-const getRandomNum = () => {
-  const minNum = Math.ceil(1);
-  const maxNum = Math.floor(100);
-  return Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
-};
+import { getRandomNum } from '../src/index.js';
 
 const userName = getUserName();
 
@@ -16,7 +11,9 @@ const checkParity = () => {
   console.log(rules);
   const round = 3;
   for (let i = 1; i <= round; i += 1) {
-    const randomNum = getRandomNum();
+    const numOne = 1;
+    const numTwo = 100;
+    const randomNum = getRandomNum(numOne, numTwo);
     const correctAnswer = randomNum % 2 === 0 ? 'yes' : 'no';
     const question = `Question: ${randomNum}`;
     console.log(question);
