@@ -2,7 +2,7 @@
 
 import readlineSync from 'readline-sync';
 import getUserName from '../src/cli.js';
-import { getRandomNum, getRandomOperators } from '../src/index.js';
+import { getRandomNum, getRandomOperator } from '../src/index.js';
 
 const userName = getUserName();
 
@@ -17,7 +17,7 @@ const calculateNumber = () => {
     const randomStrNumTwo = getRandomNum(numOne, numTwo);
     const randomNumOne = Number(randomStrNumOne);
     const randomNumTwo = Number(randomStrNumTwo);
-    const randomOperator = getRandomOperators();
+    const randomOperator = getRandomOperator();
     const expression = (`${randomStrNumOne} ${randomOperator} ${randomStrNumTwo}`);
     let correctAnswer;
     switch (randomOperator) {
