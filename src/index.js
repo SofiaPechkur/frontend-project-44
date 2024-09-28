@@ -1,3 +1,6 @@
+import readlineSync from 'readline-sync';
+import getUserName from './cli.js';
+
 export const getRandomNum = (numOne, numTwo) => {
   const minNum = Math.ceil(numOne);
   const maxNum = Math.floor(numTwo);
@@ -12,23 +15,29 @@ export const getRandomOperator = () => {
   return operators[randomNum];
 };
 
-export const getCorrectNod = (...nums) => {
-  const dividers = [];
-  for (let j = 0; j < nums.length; j += 1) {
-    const num = nums[j];
-    for (let i = 1; i <= num; i += 1) {
-      if (num % i === 0) {
-        dividers.push(i);
+export const launchGame = (rules, askQuestion, getCorrectAnswer) => {
+  const userName = getUserName();
+  console.log(rules);
+  const round = 3;
+  const numOneForRandom = 1;
+  const numTwoForRandom = 10;
+  for (let i = 1; i <= round; i += 1) {
+    const randomNumOne = getRandomNum(numOneForRandom, numTwoForRandom);
+    const randomNumTwo = getRandomNum(numOneForRandom, numTwoForRandom);
+    const question = askQuestion(randomNumOne, randomNumTwo);
+    const userAnswer = readlineSync.question('Your answer: ');
+    const correctAnswer = getCorrectAnswer(question);
+    if (userAnswer === String(correctAnswer)) {
+      const coincidence = 'Correct!';
+      console.log(coincidence);
+      if (i === round) {
+        const finalWords = (`Congratulations, ${userName}!`);
+        console.log(finalWords);
       }
-    }
-  }
-  const dividersSort = dividers.sort((a, b) => b - a);
-  let dividerFinal = 0;
-  for (let i = 0; i < dividersSort.length; i += 1) {
-    if (dividersSort[i] === dividersSort[i + 1]) {
-      dividerFinal += dividersSort[i];
+    } else {
+      const wrongAnswer = (`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'\nLet's try again, ${userName}!`);
+      console.log(wrongAnswer);
       break;
     }
   }
-  return dividerFinal;
 };
