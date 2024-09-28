@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "",
+  "description": "app with five games",
   "type": "module",
   "main": "index.js",
   "bin": {
@@ -15,7 +15,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "SofiyaPechkur",
   "license": "ISC",
   "dependencies": {
     "readline-sync": "^1.4.10"
