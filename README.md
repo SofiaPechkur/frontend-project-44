@@ -1,6 +1,24 @@
-### Hexlet tests and linter status:
+# Five games
 [![Actions Status](https://github.com/SofiaPechkur/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/SofiaPechkur/frontend-project-44/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7b9075bf6360ada41892/maintainability)](https://codeclimate.com/github/SofiaPechkur/frontend-project-44/maintainability)
+## Setup
+```bash
+make install
+```
+## Run games
+```bash
+brain-calc
+brain-even
+brain-gcd
+brain-prime
+brain-progression
+```
+This repository contains app with five games:
+brain-calc — implemented as a calculator,
+brain-even — parity check,
+brain-gcd — calculate greatest common divisor,
+brain-prime — identify prime numbers,
+brain-progression — finding the missing number in an arithmetic progression.
 ### Brain-even
 [![asciicast](https://asciinema.org/a/7anx8FBVPJ5KEPA1MfwEl2yyf.svg)](https://asciinema.org/a/7anx8FBVPJ5KEPA1MfwEl2yyf)
 ### Brain-calc
