@@ -1,12 +1,15 @@
-import { launchGame } from '../index.js';
+import { getRandomNum, launchGame } from '../index.js';
 
 export default () => {
   const rules = 'What number is missing in the progression?';
-  const askQuestion = (randomNumOne, randomNumTwo) => {
+  const getDataForLaunchGame = () => {
+    const randomNumOne = getRandomNum();
+    const randomNumTwo = getRandomNum();
+    // определение прогресии и вычисление верного ответа
     const lengthProgression = 10;
     const progression = [];
     let nextNumber = 0;
-    let correctNumber = 0;
+    let correctAnswer = 0;
     for (let i = 1; i <= lengthProgression; i += 1) {
       if (i === 1) {
         nextNumber += randomNumOne;
@@ -14,7 +17,7 @@ export default () => {
       }
       if (i === randomNumOne) {
         nextNumber += randomNumTwo;
-        correctNumber = nextNumber;
+        correctAnswer = nextNumber;
         progression.push('..');
       } else {
         nextNumber += randomNumTwo;
@@ -22,14 +25,11 @@ export default () => {
       }
     }
     const progressionFinal = progression.join(' ');
-    const result = `Question: ${progressionFinal}`;
-    console.log(result);
-    const paramsForFunctionGetCorrectAnswer = correctNumber;
-    return paramsForFunctionGetCorrectAnswer;
+    // печать вопроса пользователю
+    const question = `Question: ${progressionFinal}`;
+    console.log(question);
+    // возврат верного ответа
+    return correctAnswer;
   };
-  const getCorrectAnswer = (question) => {
-    const correctNumber = question;
-    return correctNumber;
-  };
-  launchGame(rules, askQuestion, getCorrectAnswer);
+  launchGame(rules, getDataForLaunchGame);
 };

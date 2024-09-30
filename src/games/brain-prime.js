@@ -1,15 +1,13 @@
-import { launchGame } from '../index.js';
+import { getRandomNum, launchGame } from '../index.js';
 
 export default () => {
   const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const askQuestion = (randomNumOne) => {
-    const result = (`Question: ${randomNumOne}`);
-    console.log(result);
-    const paramsForFunctionGetCorrectAnswer = randomNumOne;
-    return paramsForFunctionGetCorrectAnswer;
-  };
-  const getCorrectAnswer = (question) => {
-    const randomNumOne = question;
+  const getDataForLaunchGame = () => {
+    const randomNumOne = getRandomNum();
+    // печать вопроса пользователю
+    const question = (`Question: ${randomNumOne}`);
+    console.log(question);
+    // вычисление верного ответа
     if (randomNumOne < 2) {
       return 'no';
     }
@@ -19,8 +17,8 @@ export default () => {
         resultCheckRandomNum += 1;
       }
     }
-    const result = (resultCheckRandomNum === 0 ? 'yes' : 'no');
-    return result;
+    const correctAnswer = (resultCheckRandomNum === 0 ? 'yes' : 'no');
+    return correctAnswer;
   };
-  launchGame(rules, askQuestion, getCorrectAnswer);
+  launchGame(rules, getDataForLaunchGame);
 };

@@ -1,32 +1,26 @@
 import readlineSync from 'readline-sync';
 import getUserName from './cli.js';
 
-export const getRandomNum = (numOne, numTwo) => {
-  const minNum = Math.ceil(numOne);
-  const maxNum = Math.floor(numTwo);
-  return Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
+export const getRandomNum = (minNumber = 1, maxNumber = 10) => {
+  const randomNum = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
+  return randomNum;
 };
 
 export const getRandomOperator = () => {
   const operators = ['+', '-', '*'];
   const operatorOne = 0;
-  const operatorLast = 2;
+  const operatorLast = (operators.length - 1);
   const randomNum = getRandomNum(operatorOne, operatorLast);
   return operators[randomNum];
 };
 
-export const launchGame = (rules, askQuestion, getCorrectAnswer) => {
+export const launchGame = (rules, getDataForLaunchGame) => {
   const userName = getUserName();
   console.log(rules);
   const round = 3;
-  const numOneForRandom = 1;
-  const numTwoForRandom = 10;
   for (let i = 1; i <= round; i += 1) {
-    const randomNumOne = getRandomNum(numOneForRandom, numTwoForRandom);
-    const randomNumTwo = getRandomNum(numOneForRandom, numTwoForRandom);
-    const question = askQuestion(randomNumOne, randomNumTwo);
+    const correctAnswer = getDataForLaunchGame();
     const userAnswer = readlineSync.question('Your answer: ');
-    const correctAnswer = getCorrectAnswer(question);
     if (userAnswer === String(correctAnswer)) {
       const coincidence = 'Correct!';
       console.log(coincidence);

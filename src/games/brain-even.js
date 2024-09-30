@@ -1,17 +1,15 @@
-import { launchGame } from '../index.js';
+import { getRandomNum, launchGame } from '../index.js';
 
 export default () => {
   const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const askQuestion = (randomNumOne) => {
-    const result = `Question: ${randomNumOne}`;
-    console.log(result);
-    const paramsForFunctionGetCorrectAnswer = randomNumOne;
-    return paramsForFunctionGetCorrectAnswer;
+  const getDataForLaunchGame = () => {
+    const randomNumOne = getRandomNum();
+    // печать вопроса пользователю
+    const question = (`Question: ${randomNumOne}`);
+    console.log(question);
+    // вычисление верного ответа
+    const correctAnswer = (randomNumOne % 2 === 0 ? 'yes' : 'no');
+    return correctAnswer;
   };
-  const getCorrectAnswer = (question) => {
-    const randomNumOne = question;
-    const result = (randomNumOne % 2 === 0 ? 'yes' : 'no');
-    return result;
-  };
-  launchGame(rules, askQuestion, getCorrectAnswer);
+  launchGame(rules, getDataForLaunchGame);
 };

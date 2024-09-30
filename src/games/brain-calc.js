@@ -1,33 +1,30 @@
-import { getRandomOperator, launchGame } from '../index.js';
+import { getRandomNum, getRandomOperator, launchGame } from '../index.js';
 
 export default () => {
   const rules = 'What is the result of the expression?';
-  const askQuestion = (randomNumOne, randomNumTwo) => {
+  const getDataForLaunchGame = () => {
+    const randomNumOne = getRandomNum();
+    const randomNumTwo = getRandomNum();
     const randomOperator = getRandomOperator();
-    const result = (`Question: ${randomNumOne} ${randomOperator} ${randomNumTwo}`);
-    console.log(result);
-    const paramsForFunctionGetCorrectAnswer = [randomNumOne, randomNumTwo, randomOperator];
-    return paramsForFunctionGetCorrectAnswer;
-  };
-  const getCorrectAnswer = (question) => {
-    const randomNumOne = question[0];
-    const randomNumTwo = question[1];
-    const randomOperator = question[2];
-    let result;
+    // печать вопроса пользователю
+    const question = (`Question: ${randomNumOne} ${randomOperator} ${randomNumTwo}`);
+    console.log(question);
+    // вычисление верного ответа
+    let correctAnswer;
     switch (randomOperator) {
       case '+':
-        result = randomNumOne + randomNumTwo;
+        correctAnswer = randomNumOne + randomNumTwo;
         break;
       case '-':
-        result = randomNumOne - randomNumTwo;
+        correctAnswer = randomNumOne - randomNumTwo;
         break;
       case '*':
-        result = randomNumOne * randomNumTwo;
+        correctAnswer = randomNumOne * randomNumTwo;
         break;
       default:
         console.log(null);
     }
-    return result;
+    return correctAnswer;
   };
-  launchGame(rules, askQuestion, getCorrectAnswer);
+  launchGame(rules, getDataForLaunchGame);
 };
