@@ -6,10 +6,6 @@ const getCorrectAnswer = (randomNumOne, randomNumTwo) => {
   let nextNumber = 0;
   let correctAnswer = 0;
   for (let i = 1; i <= lengthProgression; i += 1) {
-    if (i === 1) {
-      nextNumber += randomNumOne;
-      progression.push(nextNumber);
-    }
     if (i === randomNumOne) {
       nextNumber += randomNumTwo;
       correctAnswer = nextNumber;

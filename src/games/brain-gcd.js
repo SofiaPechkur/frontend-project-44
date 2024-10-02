@@ -1,16 +1,9 @@
 import { getRandomNum, launchGame } from '../index.js';
 
 const getCorrectAnswer = (randomNumOne, randomNumTwo) => {
-  let greatestNum;
-  let smallestNum;
+  const greatestNum = Math.max(randomNumOne, randomNumTwo);
+  const smallestNum = Math.min(randomNumOne, randomNumTwo);
   let result;
-  if (randomNumOne > randomNumTwo) {
-    greatestNum = randomNumOne;
-    smallestNum = randomNumTwo;
-  } else {
-    greatestNum = randomNumTwo;
-    smallestNum = randomNumOne;
-  }
   if (greatestNum % smallestNum === 0) {
     return smallestNum;
   }
