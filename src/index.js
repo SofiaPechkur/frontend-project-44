@@ -14,11 +14,9 @@ export const getRandomOperator = () => {
 };
 
 export const launchGame = (rule, getDataForLaunchGame) => {
-  const userWelcome = 'Welcome to the Brain Games!';
-  console.log(userWelcome);
+  console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
-  const userGreeting = (`Hello, ${userName}!`);
-  console.log(userGreeting);
+  console.log(`Hello, ${userName}!`);
   console.log(rule);
   const round = 3;
   for (let i = 1; i <= round; i += 1) {
@@ -28,11 +26,9 @@ export const launchGame = (rule, getDataForLaunchGame) => {
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
     } else {
-      const wrongAnswer = (`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'\nLet's try again, ${userName}!`);
-      console.log(wrongAnswer);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'\nLet's try again, ${userName}!`);
       return;
     }
   }
-  const finalWords = (`Congratulations, ${userName}!`);
-  console.log(finalWords);
+  console.log(`Congratulations, ${userName}!`);
 };

@@ -1,28 +1,26 @@
 import { getRandomNum, launchGame } from '../index.js';
 
-const getCorrectAnswer = (randomNumOne, randomNumTwo) => {
-  const greatestNum = Math.max(randomNumOne, randomNumTwo);
-  const smallestNum = Math.min(randomNumOne, randomNumTwo);
-  let result;
+const getCorrectAnswer = (numberOne, numberTwo) => {
+  const greatestNum = Math.max(numberOne, numberTwo);
+  const smallestNum = Math.min(numberOne, numberTwo);
   if (greatestNum % smallestNum === 0) {
     return smallestNum;
   }
-  for (let divisor = (smallestNum - 1); divisor > 0; divisor -= 1) {
+  for (let divisor = (smallestNum - 1); divisor > 1; divisor -= 1) {
     if (greatestNum % divisor === 0 && smallestNum % divisor === 0) {
-      result = divisor;
-      break;
+      return divisor;
     }
   }
-  return result;
+  return 1;
 };
 
 export default () => {
   const rule = 'Find the greatest common divisor of given numbers.';
   const getDataForLaunchGame = () => {
-    const randomNumOne = getRandomNum();
-    const randomNumTwo = getRandomNum();
-    const question = `Question: ${randomNumOne} ${randomNumTwo}`;
-    const correctAnswer = getCorrectAnswer(randomNumOne, randomNumTwo);
+    const numberOne = getRandomNum();
+    const numberTwo = getRandomNum();
+    const question = `Question: ${numberOne} ${numberTwo}`;
+    const correctAnswer = getCorrectAnswer(numberOne, numberTwo);
     return [question, String(correctAnswer)];
   };
   launchGame(rule, getDataForLaunchGame);
